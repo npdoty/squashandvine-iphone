@@ -228,6 +228,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -270,7 +272,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
+									<integer>15</integer>
 									<integer>2</integer>
 									<integer>0</integer>
 								</array>
@@ -306,14 +308,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MyCLController.m</string>
+								<string>SimpleDrillDownAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -321,11 +321,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MyCLController.m</string>
+										<string>SimpleDrillDownAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>FB09456F0F9938FC0070BB50</string>
+										<string>FB697F8C0F9954810041145E</string>
 										<key>history</key>
 										<array>
 											<string>FB96C2030F946F51003F61D0</string>
@@ -335,7 +335,6 @@
 											<string>FB96C3260F99165C003F61D0</string>
 											<string>FB96C3290F99165C003F61D0</string>
 											<string>FB96C32A0F99165C003F61D0</string>
-											<string>FB96C32C0F99165C003F61D0</string>
 											<string>FB96C32E0F99165C003F61D0</string>
 											<string>FB96C43B0F991D8C003F61D0</string>
 											<string>FB96C45E0F992123003F61D0</string>
@@ -348,7 +347,8 @@
 											<string>FB0945540F99299B0070BB50</string>
 											<string>FB0945550F99299B0070BB50</string>
 											<string>FB0945560F99299B0070BB50</string>
-											<string>FB0945570F99299B0070BB50</string>
+											<string>FB697F890F9954810041145E</string>
+											<string>FB697F8A0F9954810041145E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -373,14 +373,7 @@
 											<string>FB96C3530F99165C003F61D0</string>
 											<string>FB96C3760F99165C003F61D0</string>
 											<string>FB96C3790F99165C003F61D0</string>
-											<string>FB0945580F99299B0070BB50</string>
-											<string>FB0945590F99299B0070BB50</string>
-											<string>FB09455A0F99299B0070BB50</string>
-											<string>FB09455B0F99299B0070BB50</string>
-											<string>FB09455C0F99299B0070BB50</string>
-											<string>FB09455D0F99299B0070BB50</string>
-											<string>FB09455E0F99299B0070BB50</string>
-											<string>FB09455F0F99299B0070BB50</string>
+											<string>FB697F8B0F9954810041145E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -438,9 +431,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>FB0945610F99299B0070BB50</string>
+				<string>FB697F8D0F9954810041145E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>FB0945620F99299B0070BB50</string>
+				<string>FB697F8E0F9954810041145E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -574,12 +567,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>FB0945630F99299B0070BB50</string>
-		<string>FB0945640F99299B0070BB50</string>
-		<string>FB96C20F0F946F51003F61D0</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/Aylin/Documents/Grad School/Spring 09/iphone app dev/npdoty-squashandvine-iphone-d342d952e16ff255cbb88181936fe499979cc62d/WhatsInSeason.xcodeproj</string>
+		<string>/Users/Aylin/squashandvine-iphone/WhatsInSeason.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>378 -16 1179 804 0 0 1440 878 </string>

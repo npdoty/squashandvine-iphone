@@ -109,11 +109,11 @@
 	
 	NSURLResponse *response = nil;
 	NSError *error = nil;
-	NSURL *publicTimelineURL = [NSURL URLWithString:@"http://localhost:8081/feed.xml"];
+	NSURL *publicTimelineURL = [NSURL URLWithString:@"http://whatsinseason.appspot.com/feed.xml"];
 	xmlData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:publicTimelineURL] returningResponse:&response error:&error];	
 	
 	BSTweetParser *parser = nil;
-	parser = [[[BSTweetParser alloc] initWithData:xmlData URL:[NSURL URLWithString:@"http://localhost:8081/feed.xml"]] autorelease];
+	parser = [[[BSTweetParser alloc] initWithData:xmlData URL:[NSURL URLWithString:@"http://whatsinseason.appspot.com/feed.xml"]] autorelease];
 	[parser parse];
 	
 	return parser.statuses;                                                        
