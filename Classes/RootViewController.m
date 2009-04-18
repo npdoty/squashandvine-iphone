@@ -56,15 +56,28 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @synthesize dataController;
 //@synthesize displayList;
 
-- (void)awakeFromNib {
+// commented out because program gets stuck here or something for some reason and location doesn't load
+/*- (void)awakeFromNib {
+	printf("awake from nib");
 	self.title = NSLocalizedString(@"What's In Season?", @"Master view navigation title");
-}
+}*/
 
 // Standard table view data source and delegate methods
 
-//- (void)viewDidLoad {
-//	[self setUpDisplayList];
-//}
+- (void)viewDidLoad {
+	//[self setUpDisplayList];
+	
+	[super viewDidLoad];
+	
+	self.title = NSLocalizedString(@"What's In Season?", @"Master view navigation title");
+	
+	// (1) allocates and initializes the location controller instance and 
+	// (2) actives the location updates by sending the startUpdatingLocation message to the location manager
+	locationController = [[MyCLController alloc] init];
+    [locationController.locationManager startUpdatingLocation];
+
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;	//change to "2" if you're like Shawna and want to pretend we have twice as many vegetables
@@ -113,9 +126,14 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [detailViewController release];*/
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 - (void)dealloc {
     
     [dataController release];
+	[locationController release];
 	//[displayList release];
     [super dealloc];
 }

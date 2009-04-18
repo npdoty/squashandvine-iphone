@@ -46,12 +46,16 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 */
 
 #import <UIKit/UIKit.h>
+#import "MyCLController.h"
 
 @class DataController;
 
 @interface RootViewController : UITableViewController {
     DataController *dataController;
 	//NSArray *displayList;
+	
+	//adding an instance of our MyCLController class to this view controller to receive location updates
+	MyCLController *locationController;
 }
 
 @property (nonatomic, retain) DataController *dataController;
