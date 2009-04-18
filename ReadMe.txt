@@ -1,5 +1,5 @@
 Squash & Vine iPhone
-
+Made by Nick Doty, Shawna Hein, and Aylin Selcukoglu
 ================================================================================
 DESCRIPTION:
 
