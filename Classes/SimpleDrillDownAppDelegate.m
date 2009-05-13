@@ -50,27 +50,22 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 #import "RootViewController.h"
 #import "DataController.h"
 
-
 @implementation SimpleDrillDownAppDelegate
 
 @synthesize window;
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize dataController;
-
+@synthesize locationController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
-    // Create the data controller
-    DataController *controller = [[DataController alloc] init];
-    self.dataController = controller;
-    [controller release];
-    
-	rootViewController.dataController = dataController;
-    
-    // Configure the window with its navicationController and then show it
-    [window addSubview:[navigationController view]];
-    [window makeKeyAndVisible];
+
+    // Start grabbing the location, which we need before we decide on data
+	locationController = [[MyCLController alloc] init];
+	locationController.delegate = self;
+    [locationController.locationManager startUpdatingLocation];
+	
+	//this waits on a black screen until the location is loaded.  we should change this TODO to show the splash screen longer or a subview with a simple dial to show that we're working
 }
 
 - (void)dealloc {
@@ -79,6 +74,29 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [window release];
     [dataController release];
     [super dealloc];
+}
+
+// This protocol is used to send the text for location updates back to the app delegate
+//@protocol MyCLControllerDelegate <NSObject>
+-(void)newLocationLat:(double)lat Lon:(double)lon
+{
+	printf("App Delegate Received Location: %f, %f", lat, lon);
+	
+	// Create the data controller
+    DataController *controller = [[DataController alloc] initForLat:lat Lon:lon];
+    self.dataController = controller;
+    [controller release];
+    
+	rootViewController.dataController = dataController;	
+	
+	// Configure the window with its navigationController and then show it
+    [window addSubview:[navigationController view]];
+    [window makeKeyAndVisible];	
+}
+-(void)newError:(NSString *)text
+{
+	//uh oh.
+	NSLog(@"Error: %@", text);
 }
 
 @end

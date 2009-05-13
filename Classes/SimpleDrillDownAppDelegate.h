@@ -47,11 +47,12 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 */
 
 #import <UIKit/UIKit.h>
+#import "MyCLController.h"
 
 @class DataController;
 @class RootViewController;
 
-@interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate> {
+@interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, MyCLControllerDelegate> {
 	
 	IBOutlet UIWindow *window;
 	
@@ -59,6 +60,9 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	IBOutlet RootViewController *rootViewController;
 	
     DataController *dataController;
+	
+	//adding an instance of our MyCLController class to this to receive location updates
+	MyCLController *locationController;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -66,5 +70,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @property (nonatomic, retain) RootViewController *rootViewController;
 
 @property (nonatomic, retain) DataController *dataController;
+@property (nonatomic, retain) MyCLController *locationController;
 
 @end

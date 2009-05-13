@@ -57,20 +57,17 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @interface DataController ()
 @property (nonatomic, copy, readwrite) NSMutableArray *list;
-//@property (nonatomic, copy, readwrite) NSMutableArray *list2;
-- (void)createDemoData;
+- (void)createDemoDataForLat:(double)lat Lon:(double)lon;
 @end
 
 
 @implementation DataController
 
 @synthesize list;
-//@synthesize list2;
 
-
-- (id)init {
+- (id)initForLat:(double)lat Lon:(double)lon {
     if (self = [super init]) {
-        [self createDemoData];
+        [self createDemoDataForLat:lat Lon:lon];
     }
     return self;
 }
@@ -111,8 +108,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [super dealloc];
 }
 
-
-- (void)createDemoData {
+- (void)createDemoDataForLat:(double)lat Lon:(double)lon {
     
     /*
      Create an array containing some demonstration data.
@@ -195,7 +191,7 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
     [calendar release];
 	 */
 	
-	self.list = [NSMutableArray arrayWithArray:[[BSTweetParser alloc] getData]];
+	self.list = [NSMutableArray arrayWithArray:[[BSTweetParser alloc] getDataForLat:lat Lon:lon]];
 }
 
 @end

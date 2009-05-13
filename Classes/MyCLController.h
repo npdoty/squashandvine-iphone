@@ -12,12 +12,20 @@
 
 #import <Foundation/Foundation.h>
 
+// This protocol is used to send the text for location updates back to another view controller
+@protocol MyCLControllerDelegate <NSObject>
+@required
+-(void)newLocationLat:(double)lat Lon:(double)lon;
+-(void)newError:(NSString *)text;
+@end
 
 @interface MyCLController : NSObject <CLLocationManagerDelegate> {
 	CLLocationManager *locationManager;
+	id delegate;
 }
 
 @property (nonatomic, retain) CLLocationManager *locationManager;  
+@property (nonatomic,assign) id <MyCLControllerDelegate> delegate;
 
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation

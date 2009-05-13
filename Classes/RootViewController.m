@@ -73,8 +73,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	
 	// (1) allocates and initializes the location controller instance and 
 	// (2) actives the location updates by sending the startUpdatingLocation message to the location manager
-	locationController = [[MyCLController alloc] init];
-    [locationController.locationManager startUpdatingLocation];
+	//locationController = [[MyCLController alloc] init];
+    //[locationController.locationManager startUpdatingLocation];
 
 }
 

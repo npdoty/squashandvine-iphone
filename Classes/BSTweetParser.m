@@ -103,17 +103,17 @@
 	}
 
 
-- (NSArray*) getData
+- (NSArray*) getDataForLat:(double)lat Lon:(double)lon
 {	
-	NSLog(@"Downloading public timeline... wait a sec...");
+	NSLog(@"Downloading vegetables feed... wait a sec...");
 	
 	NSURLResponse *response = nil;
 	NSError *error = nil;
-	NSURL *publicTimelineURL = [NSURL URLWithString:@"http://whatsinseason.appspot.com/feed.xml"];
+	NSURL *publicTimelineURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:8081/feed.xml?lat=%f&lon=%f", lat, lon]];	//change localhost:8081 to whatsinseason.appspot.com to run against web server
 	xmlData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:publicTimelineURL] returningResponse:&response error:&error];	
 	
 	BSTweetParser *parser = nil;
-	parser = [[[BSTweetParser alloc] initWithData:xmlData URL:[NSURL URLWithString:@"http://whatsinseason.appspot.com/feed.xml"]] autorelease];
+	parser = [[[BSTweetParser alloc] initWithData:xmlData URL:publicTimelineURL] autorelease];
 	[parser parse];
 	
 	return parser.statuses;                                                        

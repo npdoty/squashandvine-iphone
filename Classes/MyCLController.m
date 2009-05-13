@@ -13,7 +13,7 @@
 
 @implementation MyCLController
 
-@synthesize locationManager;
+@synthesize delegate, locationManager;
 
 //  this method (1) initializes the location manager and 
 // (2) tells the location manager to send updates to this class.
@@ -43,12 +43,15 @@
 	// when no clients need location data. You can always restart the generation of location updates by calling the 
 	// startUpdatingLocation method again.
     [manager stopUpdatingLocation];
+	
+	[delegate newLocationLat:newLocation.coordinate.latitude Lon:newLocation.coordinate.longitude];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
 	   didFailWithError:(NSError *)error
 {
 	NSLog(@"Error: %@", [error description]);
+	[delegate newError:[error description]];
 }
 
 - (void)dealloc {

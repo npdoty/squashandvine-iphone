@@ -17,6 +17,6 @@
 @property (retain) NSURL *url;
 
 - (id)initWithData:(NSData *)d URL:(NSURL *)aURL;
-- (NSArray*) getData;
+- (NSArray*) getDataForLat:(double)lat Lon:(double)lon;
 
 @end
