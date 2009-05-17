@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface ImageViewController : UIViewController {
 
 	UILabel *titleLabel;

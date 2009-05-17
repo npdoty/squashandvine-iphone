@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		016FB76D0FBE9D50009FBB91 /* asparagus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 016FB76C0FBE9D50009FBB91 /* asparagus.jpg */; };
 		01CC7C520F4551BD00F5AD61 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CC7C510F4551BD00F5AD61 /* ImageViewController.m */; };
 		01CC7C570F4553E500F5AD61 /* squash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01CC7C560F4553E500F5AD61 /* squash.jpg */; };
 		01CC7CD30F494D3500F5AD61 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CC7CD20F494D3500F5AD61 /* DetailView.xib */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		016FB76C0FBE9D50009FBB91 /* asparagus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = asparagus.jpg; sourceTree = "<group>"; };
 		01CC7C500F4551BD00F5AD61 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		01CC7C510F4551BD00F5AD61 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		01CC7C560F4553E500F5AD61 /* squash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squash.jpg; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				01F0D5FE0F4CB4F10092845F /* squash2.jpg */,
 				01CC7C500F4551BD00F5AD61 /* ImageViewController.h */,
 				01CC7C510F4551BD00F5AD61 /* ImageViewController.m */,
+				016FB76C0FBE9D50009FBB91 /* asparagus.jpg */,
 				01CC7CD20F494D3500F5AD61 /* DetailView.xib */,
 				28F25CCA0D64C1EB00158CCD /* DetailViewController.h */,
 				28F25CCB0D64C1EB00158CCD /* DetailViewController.m */,
@@ -209,6 +212,7 @@
 				01CC7C570F4553E500F5AD61 /* squash.jpg in Resources */,
 				01CC7CD30F494D3500F5AD61 /* DetailView.xib in Resources */,
 				01F0D5FF0F4CB4F10092845F /* squash2.jpg in Resources */,
+				016FB76D0FBE9D50009FBB91 /* asparagus.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,6 +58,9 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @synthesize dataController;
 @synthesize locationController;
 
+@synthesize latitude;
+@synthesize longitude;
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 
     // Start grabbing the location, which we need before we decide on data
@@ -81,6 +84,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 -(void)newLocationLat:(double)lat Lon:(double)lon
 {
 	printf("App Delegate Received Location: %f, %f", lat, lon);
+	latitude = lat;
+	longitude = lon;
 	
 	// Create the data controller
     DataController *controller = [[DataController alloc] initForLat:lat Lon:lon];

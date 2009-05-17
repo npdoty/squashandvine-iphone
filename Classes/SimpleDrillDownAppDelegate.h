@@ -63,6 +63,9 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	
 	//adding an instance of our MyCLController class to this to receive location updates
 	MyCLController *locationController;
+	
+	float latitude;
+	float longitude;
 }
 
 @property (nonatomic, retain) UIWindow *window;
@@ -71,5 +74,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 @property (nonatomic, retain) DataController *dataController;
 @property (nonatomic, retain) MyCLController *locationController;
+
+@property (nonatomic) float latitude;
+@property (nonatomic) float longitude;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "ImageViewController.h"
-
+#import "SimpleDrillDownAppDelegate.h"
 
 @implementation ImageViewController
 
@@ -46,23 +46,31 @@
 	//we will use the detailItem dictionary here
 	//NSString *test = [[NSString alloc] initWithString:@"Helloooooo"];
 	
-	titleLabel.text = [NSString stringWithString:[detailItem objectForKey:@"name"]];
-	/*seasonInformation.text = [NSString stringWithString:[detailItem objectForKey:@"seasonInformation"]];
-	selectionInformation.text = [NSString stringWithString:[detailItem objectForKey:@"selectionInformation"]];
-	firstImage.image = [UIImage imageNamed:[detailItem objectForKey:@"firstImage"]];
-	[firstImage setClipsToBounds:YES];
-	[firstImage setAutoresizingMask:UIViewAutoresizingNone];
-	secondImage.image = [UIImage imageNamed:[detailItem objectForKey:@"secondImage"]];
-	[secondImage setClipsToBounds:YES];
-	[secondImage setAutoresizingMask:UIViewAutoresizingNone];
-	 */
-	//[firstImage initWithImage:[UIImage imageNamed:[NSString stringWithString:[detailItem objectForKey:@"firstImage"]]]];
-	//[test release];
+	NSString *vegetableName = [NSString stringWithString:[detailItem objectForKey:@"name"]];
+	
+	titleLabel.text = vegetableName;
+	
+	UIImage *image = [UIImage imageNamed:[[vegetableName lowercaseString] stringByAppendingString:@".jpg"]];
+	
+	if (image != nil)
+	{
+		firstImage.image = image;
+		[firstImage setClipsToBounds:YES];
+		[firstImage setAutoresizingMask:UIViewAutoresizingNone];
+	}
+	
+	NSString *selectionText = [detailItem objectForKey:@"selection"];
+	if (selectionText != nil)
+	{
+		selectionInformation.text = [NSString stringWithString:selectionText];
+	}
 }
 
 -(IBAction)seasonReceived:(id)sender
 {
 	int choice = [sender selectedSegmentIndex];
+	float latitude = [[UIApplication sharedApplication].delegate latitude];
+	float longitude = [[UIApplication sharedApplication].delegate longitude];
 	
 	NSURL *url = [[NSURL alloc] initWithString:@"http://localhost:8081/vote"];
 	
@@ -80,6 +88,8 @@
 	int theId = [[item objectForKey:@"id"] intValue];
 	
 	[postBody appendData:[[NSString stringWithFormat:@"idField=%d", theId] dataUsingEncoding:NSUTF8StringEncoding]];	
+	[postBody appendData:[[NSString stringWithFormat:@"&lat=%f", latitude] dataUsingEncoding:NSUTF8StringEncoding]];	
+	[postBody appendData:[[NSString stringWithFormat:@"&lon=%f", longitude] dataUsingEncoding:NSUTF8StringEncoding]];	
 	
 	[request setHTTPBody:postBody];
 	

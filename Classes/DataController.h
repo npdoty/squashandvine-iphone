@@ -61,5 +61,6 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 - (unsigned)countOfList;
 - (id)objectInListAtIndex:(unsigned)theIndex;
+- (id)initForLat:(double)lat Lon:(double)lon;
 
 @end
