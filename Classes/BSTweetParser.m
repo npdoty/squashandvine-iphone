@@ -109,7 +109,7 @@
 	
 	NSURLResponse *response = nil;
 	NSError *error = nil;
-	NSURL *publicTimelineURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:8081/feed.xml?lat=%f&lon=%f", lat, lon]];	//change localhost:8081 to whatsinseason.appspot.com to run against web server
+	NSURL *publicTimelineURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://whatsinseason.appspot.com/feed.xml?lat=%f&lon=%f", lat, lon]];	//change localhost:8081 to whatsinseason.appspot.com to run against web server
 	xmlData = [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:publicTimelineURL] returningResponse:&response error:&error];	
 	
 	BSTweetParser *parser = nil;

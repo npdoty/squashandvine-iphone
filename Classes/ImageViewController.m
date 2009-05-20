@@ -40,17 +40,15 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	    [super viewDidLoad];
-	
-	//fill in all the generic titles and stuff here
-	//we will use the detailItem dictionary here
-	//NSString *test = [[NSString alloc] initWithString:@"Helloooooo"];
-	
+	[super viewDidLoad];
+		
 	NSString *vegetableName = [NSString stringWithString:[detailItem objectForKey:@"name"]];
 	
 	titleLabel.text = vegetableName;
 	
-	UIImage *image = [UIImage imageNamed:[[vegetableName lowercaseString] stringByAppendingString:@".jpg"]];
+	NSString *lowercaseString = [[[vegetableName stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@""] lowercaseString];
+	
+	UIImage *image = [UIImage imageNamed:[lowercaseString stringByAppendingString:@".jpg"]];
 	
 	if (image != nil)
 	{
@@ -64,6 +62,9 @@
 	{
 		selectionInformation.text = [NSString stringWithString:selectionText];
 	}
+	else {
+		selectionInformation.text = @"";
+	}
 }
 
 -(IBAction)seasonReceived:(id)sender
@@ -72,7 +73,7 @@
 	float latitude = [[UIApplication sharedApplication].delegate latitude];
 	float longitude = [[UIApplication sharedApplication].delegate longitude];
 	
-	NSURL *url = [[NSURL alloc] initWithString:@"http://localhost:8081/vote"];
+	NSURL *url = [[NSURL alloc] initWithString:@"http://whatsinseason.appspot.com/vote"];
 	
 	NSMutableURLRequest *request =  [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setHTTPMethod:@"POST"];
@@ -111,19 +112,73 @@
 }
 
 
-/*
+
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+		return YES;
+	if (interfaceOrientation == UIInterfaceOrientationPortrait)
+		return YES;
+	else
+		return NO;
+	//return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	//return YES;
 }
-*/
+
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+	{
+		//portraitView = self.view;
+		//[portraitView retain];	//hold onto the view because we're going to use it again later, otherwise it'll get released when it's replaced
+		
+		//UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+		[[UIApplication sharedApplication] setStatusBarHidden:true animated:true];
+	}
+	else if (toInterfaceOrientation == UIInterfaceOrientationPortrait)
+	{
+		[[UIApplication sharedApplication] setStatusBarHidden:false animated:true];
+	}
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+	if (fromInterfaceOrientation == UIInterfaceOrientationPortrait)
+	{
+		[self.navigationController setNavigationBarHidden:true animated:false];
+		NSString *vegetableName = [NSString stringWithString:[detailItem objectForKey:@"name"]];
+		NSString *lowercaseString = [[[vegetableName stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@""] lowercaseString];
+		
+		UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[lowercaseString stringByAppendingString:@".jpg"]]];
+		
+		//these properties (autoresizingMask, contentMode and frame) are pure nonsense.  their interactions are completely random.
+		[view setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+		view.contentMode = UIViewContentModeCenter|UIViewContentModeScaleAspectFill;//|UIViewContentModeRedraw;
+		view.frame = [UIScreen mainScreen].bounds;
+		[view setNeedsLayout];
+		[view setNeedsDisplay];
+		
+		landscapeView = view;
+		
+		self.view = landscapeView;
+		[landscapeView release];		
+	}
+	else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+	{
+		[self.navigationController setNavigationBarHidden:false animated:true];
+		
+		NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"DetailView" owner:self options:nil];
+		self.view = [nibViews objectAtIndex: 1];
+		[self viewDidLoad];
+	}
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
-
 
 - (void)dealloc {
 	[detailItem release];

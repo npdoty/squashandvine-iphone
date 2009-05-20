@@ -48,6 +48,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 
 #import <UIKit/UIKit.h>
 #import "MyCLController.h"
+#import "SplashViewController.h"
+#import "LoadingViewController.h"
 
 @class DataController;
 @class RootViewController;
@@ -55,6 +57,9 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @interface SimpleDrillDownAppDelegate : NSObject <UIApplicationDelegate, MyCLControllerDelegate> {
 	
 	IBOutlet UIWindow *window;
+	
+	SplashViewController *viewController;
+	LoadingViewController *loadingViewController;
 	
 	IBOutlet UINavigationController *navigationController;
 	IBOutlet RootViewController *rootViewController;
@@ -69,6 +74,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 }
 
 @property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, retain) IBOutlet SplashViewController *viewController;
+@property (nonatomic, retain) IBOutlet LoadingViewController *loadingViewController;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, retain) RootViewController *rootViewController;
 

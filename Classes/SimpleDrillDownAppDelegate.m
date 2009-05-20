@@ -49,6 +49,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 #import "SimpleDrillDownAppDelegate.h"
 #import "RootViewController.h"
 #import "DataController.h"
+#import "SplashViewController.h"
+#import "LoadingViewController.h"
 
 @implementation SimpleDrillDownAppDelegate
 
@@ -57,6 +59,8 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 @synthesize rootViewController;
 @synthesize dataController;
 @synthesize locationController;
+@synthesize viewController;
+@synthesize loadingViewController;
 
 @synthesize latitude;
 @synthesize longitude;
@@ -68,12 +72,24 @@ Copyright (C) 2008 Apple Inc. All Rights Reserved.
 	locationController.delegate = self;
     [locationController.locationManager startUpdatingLocation];
 	
-	//this waits on a black screen until the location is loaded.  we should change this TODO to show the splash screen longer or a subview with a simple dial to show that we're working
+	//loading screen stuff
+	loadingViewController = [[LoadingViewController alloc] init];
+	//Override point for customization after app launch
+	[window addSubview:[loadingViewController view]];
+		
+	//splash screen stuff
+	viewController = [[SplashViewController alloc] init];
+	//Override point for customization after app launch
+	[window addSubview:[viewController view]];
+	
+	[window makeKeyAndVisible];
 }
 
 - (void)dealloc {
     [navigationController release];
 	[rootViewController release];
+	[viewController release];
+	[loadingViewController release];
     [window release];
     [dataController release];
     [super dealloc];

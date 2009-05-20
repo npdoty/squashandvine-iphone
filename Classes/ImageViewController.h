@@ -17,6 +17,8 @@
 	UIImageView *secondImage;
 	NSDictionary *detailItem;
 	
+	UIView *portraitView;
+	UIView *landscapeView;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
